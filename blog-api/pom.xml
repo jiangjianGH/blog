@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jiang</groupId>
+    <artifactId>blog-root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>blog-api</artifactId>
+  <build>
+  	<plugins>
+	  <plugin>
+	    <groupId>io.swagger</groupId>
+	    <artifactId>swagger-codegen-maven-plugin</artifactId>
+	    <version>2.2.1</version>
+	    <executions>
+	        <execution>
+	            <goals>
+	                <goal>generate</goal>
+	            </goals>
+	            <configuration>
+	                <inputSpec>src/main/resources/uber.yaml</inputSpec>
+	                <output> ${project.build.directory}</output>
+	                <language>inflector</language>
+	                <addCompileSourceRoot>false</addCompileSourceRoot>
+	                <modelPackage>com.uber.gen.model</modelPackage>
+	                <apiPackage>com.uber.gen</apiPackage>
+	                <invokerPackage>com.uber.gen.client</invokerPackage>
+	                <configOptions>
+	                	<dateLibrary>java7</dateLibrary>
+	                </configOptions>
+	            </configuration>
+	        </execution>
+	        
+	    </executions>
+	</plugin>
+	</plugins>
+  </build>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.google.code.gson</groupId>
+  		<artifactId>gson</artifactId>
+  		<version>2.3.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>io.swagger</groupId>
+  		<artifactId>swagger-annotations</artifactId>
+  		<version>1.5.0</version>
+  	</dependency>
+  </dependencies>
+</project>
